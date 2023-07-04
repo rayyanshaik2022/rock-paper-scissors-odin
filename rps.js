@@ -28,7 +28,7 @@ function playRound(playerMove, computerMove) {
 function convertRoundToMessage(roundOutput) {
     switch (roundOutput) {
         case -1:
-            return "The computer has won!";
+            return "The AI has won!";
         case 0:
             return "The game was a tie!";
         case 1:
@@ -43,21 +43,24 @@ function roundUpdate(inputPlay) {
 
     // Update display
     computerPlayDiv = document.querySelector(".computer-play");
-    computerPlayDiv.textContent = computerPlay;
+    computerPlayDiv.textContent = "🤖 chooses " + computerPlay + "!";
 
     resultsTextDiv = document.querySelector(".results-box");
     resultsTextDiv.textContent = winnerText;
 
+    scoreWin = document.querySelector(".human-score");
+    scoreLose = document.querySelector(".computer-score");
     if (output == 1) {
-        scoreWin = document.querySelector(".human-score");
         scoreWin.textContent = 1 + Number(scoreWin.textContent);
     } else if (output == -1) {
-        scoreLose = document.querySelector(".computer-score");
+        scoreLose.textContent = 1 + Number(scoreLose.textContent);
+    } else {
+        scoreWin.textContent = 1 + Number(scoreWin.textContent);
         scoreLose.textContent = 1 + Number(scoreLose.textContent);
     }
 }
 
-humanBtns = document.querySelectorAll("button.play-btn");
+humanBtns = document.querySelectorAll(".play-btn");
 humanBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
         console.log(btn.textContent);

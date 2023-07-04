@@ -1,0 +1,107 @@
+body {
+    background-color: #fafcff;
+    color: #222222;
+    font-family: 'Noto Sans KR', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+
+    padding: 0px;
+    margin: 0px;
+
+
+}
+
+.header > h1 {
+    text-align: center;
+    font-size: 64px;
+    font-weight: 700;
+    margin-bottom: 10px;
+
+    color: #ee6f6f;
+}
+
+.move-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    gap: 10%;
+    width: 90%;
+
+    flex-wrap: wrap;
+}
+
+.move-card {
+    width: 180px;
+    height: 210px;
+
+    min-width: 180px;
+
+
+    font-size: 32px;
+    font-weight: 700;
+    color: #6474E5;
+    user-select: none;
+
+    border: 2px solid #9aa4ec;
+    border-radius: 5%;
+    background-color: #00000000;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 5%;
+}
+
+.score-container {
+    width: 70%;
+    margin-top: -50px;
+    margin-bottom: 2%;
+
+    display: flex;
+    gap: 5%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+
+    border: 2px solid #F4A4A4;
+    border-radius: 9px;
+    background-color: #00000000;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px; 
+}
+
+.score-val-container {
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+    flex-grow: 1;
+
+}
+
+.human-score, .computer-score {
+    font-size: 78px;
+    min-width: none;
+    color: #ee6f6f;
+    font-weight: 700;
+}
+
+.score-desc {
+    font-size: 12px;
+    color: #8e3838;
+}
+
+.scoreboard-text-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    gap: 38px;
+    font-size: 20px;
+    color: #ee6f6f;
+}
