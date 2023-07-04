@@ -1,7 +1,14 @@
 let moves = ["Paper", "Rock", "Scissors", "Paper"];
+let movesEmojis = ["📄", "🪨", "✂️"];
+
+let countWinLoss = 0;
 
 function getComputerChoice() {
     return moves[Math.floor(Math.random() * 3)];
+}
+
+function convertComputerChoice(move) {
+    return moves.indexOf(move);
 }
 
 /*
@@ -19,8 +26,10 @@ function playRound(playerMove, computerMove) {
         convertedComputer - convertedPlayer == 1 ||
         convertedPlayer - convertedComputer == 2
     ) {
+        countWinLoss++;
         return 1;
     } else {
+        countWinLoss++;
         return -1;
     }
 }
@@ -37,13 +46,19 @@ function convertRoundToMessage(roundOutput) {
 }
 
 function roundUpdate(inputPlay) {
+
+    if (countWinLoss > 4) {
+        return;
+    }
+    
     let computerPlay = getComputerChoice();
     let output = playRound(inputPlay, computerPlay);
     let winnerText = convertRoundToMessage(output);
 
     // Update display
     computerPlayDiv = document.querySelector(".computer-play");
-    computerPlayDiv.textContent = "🤖 chooses " + computerPlay + "!";
+    computerPlayDiv.textContent =
+        "🤖 >> " + movesEmojis[convertComputerChoice(computerPlay)];
 
     resultsTextDiv = document.querySelector(".results-box");
     resultsTextDiv.textContent = winnerText;
@@ -60,11 +75,31 @@ function roundUpdate(inputPlay) {
     }
 }
 
-humanBtns = document.querySelectorAll(".play-btn");
+function endGame() {
+    if (countWinLoss < 5) {
+        return;
+    }
+
+    cards = document.querySelectorAll(".move-card");
+    cards.forEach((card) => {
+        card.classList.add("lock-card");
+        card.classList.remove("play-btn");
+    });
+
+    textDiv = document.querySelector(".computer-play");
+    textDiv.style['font-size'] = '20px';
+    textDiv.textContent = "Game Over! Refresh to play again."
+}
+
+humanBtns = document.querySelectorAll(".move-card");
 humanBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
         console.log(btn.textContent);
         roundUpdate(btn.textContent);
+    });
+
+    btn.addEventListener("click", (e) => {
+        endGame();
     });
 });
 
